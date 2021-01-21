@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box; 
+    font-size: 0px;
+}
+.grid-container > .rose {
+    background-color: #F5C6D6;
+    border: 8px white solid;
+    height: 170px;
+    width: 920px;
+    text-align: center;
+}
+.grid-container > .pink {
+    background-color: #EE2E84;
+    border: 8px white solid;
+    height: 150px;
+    width: 230px;
+    display: inline-block;
+}
+.grid-container > .blue {
+    background-color: #85CFD8;
+    border: 8px white solid;
+    height: 150px;
+    width: 461px;
+    display: inline-block;
+}
+.grid-container > .green {
+    background-color: #8DC63F;
+    border: 8px white solid;
+    height: 150px;
+    width: 75%;
+    display: inline-block;
+}
+.grid-container > .orange {
+    background-color: #E76E34;
+    border: 8px white solid;
+    height: 150px;
+    width: 25%;
+    display: inline-block;
+}
+.grid-container > .orange .green {
+    display: inline-block;
+}
+@media only screen and (max-width: 768px){
+
+    .grid-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .grid-container > .rose {
+        border: 3px solid white;
+        height: 100px;
+        width: 100%;
+    }
+    .grid-container > .pink {
+        border: 3px solid white;
+        height: 100px;
+        width: 100%;
+    }
+    .grid-container > .blue {
+        border: 3px solid white;
+        height: 100px;
+        width: 100%;
+    }
+    .grid-container > .green {
+        border: 3px solid white;
+        height: 100px;
+        width: 100%;
+    }
+    .grid-container > .orange {
+        border: 3px solid white;
+        height: 100px;
+        width: 100%;
+    }
+}

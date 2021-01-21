@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <form name="travelForm">
+            <b>First Name:</b> <br> <input id="firstName" type="text" name="firstName"/> <br>
+            <b>Last Name:</b> <br> <input type="text" name="lastName"/><br/>
+            <b>Age:</b> <br> <input type="number" name="age"/><br/>
+            <b>Gender:</b> <br>
+            Male<input type="radio" name="gender"><br>
+            Female <input type="radio" name="gender">
+            <br>
+            <label for="destination"><b>Choose a destination:</b></label>
+            <select name="destination" id="destination">
+                <option value="Norway">Norway</option>
+                <option value="Paris">Paris</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Vancouver">Vancouver</option>
+                <option value="London">London</option>
+                <option value="Dubai">Dubai</option>
+            </select><br>
+            <b><i>Please select any dietary restrictions:</i></b> <br>
+            Vegetarian <input type="checkbox" value="Vegetarian" name="dietary"><br>
+            Gluten Free <input type="checkbox" value="Gluten-Free" name="dietary"><br>
+            Other Allergies<input type="checkbox" name="Dietary"> (Please consult flight crew before departure)<br><br>
+
+            <input type="submit" value="Submit">
+
+
+
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

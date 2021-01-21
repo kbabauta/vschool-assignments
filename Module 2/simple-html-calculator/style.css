@@ -1,0 +1,46 @@
+#add {
+    padding: 10px;
+    background-color: antiquewhite;
+    border: 2px solid black;
+    margin-bottom: 5px;
+}
+
+#subtract {
+    padding: 10px;
+    background-color: burlywood;
+    border: 2px solid black;
+    margin-bottom: 5px;
+}
+
+#multiply {
+    padding: 10px;
+    background-color: cornsilk;
+    border: 2px solid black;
+}
+
+body{
+    text-align: center;
+}
+
+form {
+    margin: 0 auto;
+    width: 0px;
+}
+
+#sum {
+    background-color: brown;
+    margin-top: 5px;
+    border: 1px solid black;
+}
+
+#difference{
+    background-color: chocolate;
+    margin-top: 5px;
+    border: 1px solid black;
+}
+
+#product {
+    background-color: coral;
+    margin-top: 5px;
+    border: 1px solid black;
+}

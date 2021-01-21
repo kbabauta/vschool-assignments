@@ -1,0 +1,80 @@
+{
+    "menu": {
+        "appetizers": [
+            {
+                "name": "Bread Rolls",
+                "ingredients": ["sourdough bread", "butter"],
+                "description": "Classic bread and butter combo"
+            },
+            {
+                "name": "Turkey Roll-Ups",
+                "ingredients": ["turkey", "provolone cheese"],
+                "description": "Provolone cheese rolled inside Turkey" 
+            },
+            {
+                "name": "Goat Cheese Bites",
+                "ingredients": ["goat cheese", "italian seasoning"],
+                "description": "Mini goat cheese bites filled with Italian seasoning and spices"
+            }
+
+        ],
+        "cold sandwiches": [
+            {
+                "name": "Ham and Cheese",
+                "ingredients": ["bread", "ham", "cheese"],
+                "description": "Classic ham and cheese combo"
+            },
+            {
+                "name": "Ham and Cheese Deluxe",
+                "ingredients": ["bread", "ham", "cheese", "lettuce", "tomato"],
+                "description": "Ham and cheese with tomato and lettuce"
+            },
+            {
+                "name": "Turkey and Cheese",
+                "ingredients": ["bread", "turkey", "provolone cheese"],
+                "description": "Turkey and cheese combo"
+            }
+        ],
+        "hot sandwiches": [
+            {
+                "name": "Meatball Sub",
+                "ingredients": ["bread", "pork meatballs", "marinara sauce", "provolone cheese"],
+                "description": "Meatballs, marinara sauce, and melted provolone cheese on toasted bread"
+            },
+            {
+                "name": "Philly Cheesesteak",
+                "ingredients": ["provolone cheese", "bell peppers", "shredded beef"],
+                "description": "Melted provolone cheese on top of shredded beef, bell peppers, and toasted bread"
+            }
+        ],
+        "desserts": [
+            {
+                "name": "Chocolate Chip Cookies",
+                "ingredients": ["chocolate chips", "eggs", "flour", "sugar"],
+                "description": "Just like grandma used to make!"
+            },
+            {
+                "name": "Oat and Raisin Cookies",
+                "ingredients": ["oats", "sugar", "eggs", "flour", "raisins"],
+                "description": "Oat & raisins combined into a cookie"
+            }
+        ],
+        "drinks":[
+            {
+                "name": "Italian Soda",
+                "ingredients": ["carbonated water", "flavoring", "whipped cream"],
+                "description": "Your choice of flavoring, topped with whipped cream"
+            },
+            {
+                "name": "Lemonade",
+                "ingredients": ["lemon", "sugar", "ice"],
+                "description": "Reminding you of those hot summer days"
+            },
+            {
+                "name": "Wine",
+                "ingredients": ["grapes", "water"],
+                "description": "Red or White (21 & over only)"
+            }
+        ]
+    }
+}

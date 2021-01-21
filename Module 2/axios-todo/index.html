@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Kevin's To-Do List</title>
+</head>
+<body>
+    <div class="title-bar">
+        <h1 class="title">Kevin's To-Do List</h1>
+    </div>
+    <div class="main">
+        <div class="top">
+            <form name="addItem" id="add-todo">
+                <div class="title-bar">
+                    <h3 class="title">Add To-Do</h3>
+                </div>
+                <label class="label" for="title">To-Do Title</label>
+                <input class="input" name="title" id="title" required/>
+                <label class="inline-label" for="title">Img URL</label>
+                <input class="input" name="price" id="img_url" />
+                <button id="submit">Submit</button>       
+            </form>
+        </div>
+        <div class="todos">
+            <div class="title-bar">
+                <h3 class="title">List of to do's</h3>
+            </div>
+            <hr>
+            <ul id="list">
+                <li class="no-show">
+                    <div></div>
+                    <p class="no-show"></p>
+                    <p></p>
+                    <button class="edit">Edit</button>
+                    <button class="delete">Clear</button>
+                    <input type="checkbox" id="complete-box" name="complete-box">
+                    <label for="complete-box"></label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
