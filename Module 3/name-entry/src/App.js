@@ -8,11 +8,10 @@ class App extends React.Component {
       input: "",
       inputs: []
     }
-    this.handleChange = this.handleChange.bind(this)
     this.updateInput = this.updateInput.bind(this)
   }
 
-  handleChange(event){
+  handleChange = (event) =>{
     this.setState({
       input: event.target.value
     })
@@ -22,7 +21,7 @@ class App extends React.Component {
     event.preventDefault()
     let items = [...this.state.inputs]
     items.push(this.state.input)
-    this.setState({inputs: items})
+    this.setState(prevState => ({inputs: [...prevState.inputs, prevState.input]}))
     document.getElementById("inputBox").value = ""
     this.setState({input: ""})
   }

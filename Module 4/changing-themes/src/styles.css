@@ -1,0 +1,87 @@
+body {
+    padding: 15px;
+}
+
+.Dark-main {
+    display: flex;
+    background-color: #252625;
+    color: darksalmon;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
+
+.Light-main {
+    display: flex;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    background-color: #cfcfcf;
+    color: #1f3638;
+}
+
+.Dark-nav{
+    display: flex;
+    justify-content: space-around;
+    font-style: oblique;
+    font-weight: bold;
+    color: lightblue;
+    background-color: black;
+
+}
+
+.Light-nav {
+    background-color: #b0ced1;
+    display: flex;
+    justify-content: space-around;
+    font-style: oblique;
+
+}
+
+.Dark-button-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 15%;
+}
+
+.Light-button-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 15%;
+}
+.Dark-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #252625;
+    padding: 30px;
+}
+
+.Light-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background-color: #cfcfcf;
+}
+
+.Dark-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #454545;
+    color: white;
+    padding: 0%;
+    margin: 0;
+    font-style: italic;
+}
+
+.Light-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+    font-style: italic;
+}
