@@ -1,0 +1,35 @@
+nav *{
+    padding: 25px;
+    text-align: center;
+    font-size: x-large;
+    text-decoration: none;
+    background-color: #636363;
+    color: #e8e8e8;
+}
+
+
+.home {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.home:hover {
+    background-color: gray;
+}
+.home:visited {
+    color: #e6e6e6;
+}
+
+
+.deals-list {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 25%;
+}
+.deals-list:hover {
+    background-color: gray;
+}
+
+.deals-list:visited {
+    color: #e6e6e6;
+}
+
