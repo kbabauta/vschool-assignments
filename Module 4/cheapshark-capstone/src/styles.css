@@ -14,6 +14,7 @@ nav *{
 }
 .home:hover {
     background-color: gray;
+    font-weight: bold;
 }
 .home:visited {
     color: #e6e6e6;
@@ -27,6 +28,7 @@ nav *{
 }
 .deals-list:hover {
     background-color: gray;
+    font-weight: bold;
 }
 
 .deals-list:visited {

@@ -1,8 +1,8 @@
-import React, {Component} from "react"
+import React from "react"
 import {Link} from "react-router-dom"
 import "./styles.css"
 
-function Header(props) {
+function Header() {
     return (
         <div>
             <nav>
