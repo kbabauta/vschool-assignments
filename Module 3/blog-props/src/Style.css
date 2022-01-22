@@ -1,0 +1,88 @@
+body{
+    background: url(https://images.unsplash.com/photo-1504691342899-4d92b50853e1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8YmxvZ2dlcnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60) no-repeat;
+    margin: 0;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.link-button{
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.link-button:hover,
+.link-button:focus {
+    text-decoration: none;
+}
+
+#nav {
+    width: 100%;
+    align-content: center;
+    margin: 0 0 3em 0;
+    padding: 0;
+    list-style: none;
+}
+
+#nav li > button {
+    padding: 8px 15px;
+    text-transform: uppercase;
+    font-size: 8pt;
+    text-align: center;
+}
+
+.header {
+    height: 100px;
+    text-align: center;
+    border: 1px solid black;
+    background-color: #ffffff;
+}
+
+.headerTitle {
+    margin: 0;
+}
+
+.blogPost{
+    border-bottom: 1px solid gray;
+}
+
+.blogButton{
+    margin-top: 5px;
+    float: right;
+    background-color: #43a6ad;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.blogContainer {
+    width: 50%;
+    margin: 0 auto;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.footer {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.footer p {
+    font-size: 8pt;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+    margin: auto;
+    padding: 10px;
+}

@@ -1,0 +1,22 @@
+.container{
+  width: 75%;
+  height: 500px;
+  border: 1px solid black;
+  text-align: center;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.containerContents{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+p {
+  font-weight: bold;
+}
