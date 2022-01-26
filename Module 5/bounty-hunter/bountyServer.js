@@ -11,7 +11,7 @@ app.use(morgan("dev"))
 connectdb()
 
 
-app.use("/bounties", require("./routes/bountyRouter"))
+app.use("/bounties", require("./routes/bountyRouter.js"))
 
 app.use((err, req, res, next) => {
     console.log(err)

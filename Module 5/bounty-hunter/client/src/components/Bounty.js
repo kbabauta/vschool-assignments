@@ -1,34 +1,48 @@
 import React, {useState} from "react";
 import BountyForm from "./bountyForm";
 
-function Bounty(props){
-    const [editButton, setEditButton] = useState(false)
+export default function Bounty(props){
+        const {firstName, lastName, bounty, bountyType, _id, status} = props
+        const [editToggle, setEditToggle] = useState(false)
 
-    return(
+    return (
         <div className="bounty">
-            { !editButton ? 
-                <>
-                    <h3>{props.bountyInfo.firstName} {props.bountyInfo.lastName}</h3>
-                    <p>The {props.bountyInfo.type} is wanted {props.bountyInfo.living ? "Alive" : "Dead"}</p>
-                    <p>Payment will be {props.bountyInfo.bountyPrice}cr</p>
-                    <button className="editBtn" onClick={() => setEditButton(editButton ? false : true)}>Edit</button>
-                    <button className="deleteBtn" onClick={() => props.deleteBounty(props.bountyInfo._id)}>Delete</button>
-                </>
+            {!editToggle ?
                 
-                :
-
-                <>
-                    <BountyForm
-                        _id={props.bountyInfo._id}
-                        buttonText="Save"
-                        submit={props.editBounty}
-                    />
-                </>
-        
-        }
-        <br/>
+                    <>
+                        <h1>{firstName} {lastName}</h1>
+                        <h3>Status: {status}</h3>
+                        <p>{bounty} cr</p>
+                        <p><b>Affiliation:</b> <i>{bountyType}</i></p>
+                        <button
+                            onClick={() => props.deleteBounty(_id)}
+                            className="delete-btn">Delete
+                        </button>
+                        <button
+                            className="edit-btn"
+                            onClick={() => setEditToggle(prevToggle => !prevToggle)}
+                            >
+                            Edit
+                        </button>
+                    </>
+                    :
+                    <>
+                        <BountyForm
+                            firstName={firstName}
+                            lastName={lastName}
+                            bounty={bounty}
+                            bountyType={bountyType}
+                            _id={_id}
+                            btnText="Save Edit"
+                            submit={props.editBounty}
+                        />
+                        <button
+                            className="close-btn"
+                            onClick={()=> setEditToggle(prevToggle => !prevToggle)}>
+                            Close
+                        </button>
+                    </>
+                }
         </div>
     )
 }
-
-export default Bounty

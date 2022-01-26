@@ -6,14 +6,22 @@ const bountySchema = new Schema({
         type: String,
         required: true,
     },
-    lastName: String,
-    living: {
-        type: Boolean,
-        default: 'Alive',
+    lastName:{
+        type: String,
+        required: true
     },
-    bountyPrice: {
+    status: {
+        type: String,
+        default: "Alive"
+    },
+
+    bounty: {
         type: Number,
         required: true
+    },
+
+    bountyType:{
+        type: String,
     }
 })
 
