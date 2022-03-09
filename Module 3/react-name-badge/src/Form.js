@@ -134,7 +134,7 @@ class Form extends Component {
                         minLength="3" 
                         onChange={this.handleChange} 
                     />
-                    <button id="submitButton" type="submit" disabled>Submit</button>
+                    <button id="submitButton" type="submit">Submit</button>
                 </form>
                 <div>
                     {badges}
