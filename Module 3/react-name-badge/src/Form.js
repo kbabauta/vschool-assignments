@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Badge from './Badge'
-import './App.css'
 
 class Form extends Component {
     
@@ -74,7 +73,7 @@ class Form extends Component {
         })
         return (
             <div className="container">
-                <form className="badgeForm" onSubmit={this.addBadge}>
+                <form id="badgeForm" onSubmit={this.addBadge}>
                     <input 
                         type="text" 
                         id="fName" 

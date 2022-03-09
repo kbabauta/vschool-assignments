@@ -12,14 +12,18 @@ function Badge (props) {
         6 : "violet"
     }
     return (
-        <div style={{backgroundColor: colors[Math.floor(Math.random() * 6)]}} className="b-container" >
-            <h1>Hello My Name Is {props.badge.fName} {props.badge.lName}</h1>
-            <p>Place of Birth: {props.badge.birthPlace}</p>
-            <p>Email: {props.badge.email}</p>
-            <p>Phone: {props.badge.phone}</p>
-            <p>Favorite Food: {props.badge.favFood}</p>
-            <p>About Me: {props.badge.about}</p>
+        <div className='badge-container'>
+            <div style={{backgroundColor: colors[Math.floor(Math.random() * 6)]}} className="b-container" >
+                <h1>Hello My Name Is {props.badge.fName} {props.badge.lName}</h1>
+                <p><b>Place of Birth: </b>{props.badge.birthPlace}</p>
+                <p><b>Email:</b> {props.badge.email}</p>
+                <p><b>Phone: </b>{props.badge.phone}</p>
+                <p><b>Favorite Food: </b>{props.badge.favFood}</p>
+                <p><b>About Me: </b>{props.badge.about}</p>
+            </div>
+
         </div>
+        
     )
 }
 
