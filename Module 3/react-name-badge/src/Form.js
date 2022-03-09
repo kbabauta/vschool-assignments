@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Badge from './Badge'
+import './App.css'
 
 class Form extends Component {
     
@@ -73,7 +74,7 @@ class Form extends Component {
         })
         return (
             <div className="container">
-                <form id="badgeForm" onSubmit={this.addBadge}>
+                <form className="badgeForm" onSubmit={this.addBadge}>
                     <input 
                         type="text" 
                         id="fName" 
@@ -114,7 +115,7 @@ class Form extends Component {
                         id="phone" 
                         name="phone" 
                         placeholder="Phone" 
-                        pattern="[0-9]{3}[0-9]{3}[0-9]{4}" 
+                        pattern="[0-9\-]{3}[0-9\-]{3}[0-9\-]{4}" 
                         onChange={this.handleChange} 
                     />
                     <input 

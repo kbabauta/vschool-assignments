@@ -13,7 +13,7 @@ function Badge (props) {
     }
     return (
         <div style={{backgroundColor: colors[Math.floor(Math.random() * 6)]}} className="b-container" >
-            <h1>Hello My Name Is: {props.badge.fName} {props.badge.lName}</h1>
+            <h1>Hello My Name Is {props.badge.fName} {props.badge.lName}</h1>
             <p>Place of Birth: {props.badge.birthPlace}</p>
             <p>Email: {props.badge.email}</p>
             <p>Phone: {props.badge.phone}</p>
