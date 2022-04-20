@@ -1,0 +1,9 @@
+.mark {
+    background: rgb(185, 185, 135);
+    border: 1px solid black;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
