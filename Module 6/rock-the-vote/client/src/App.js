@@ -7,27 +7,26 @@ import Public from "./components/Public";
 import { UserContext } from "./context/UserProvider"
 
 
-function App() {
+export default function App() {
   const { token, logout } = useContext(UserContext)
+
   return(
-    <div className="app">
-      <Navbar logout={logout}/>
-      <Routes>
-        <Route 
-          exact path="/"
-          render={() => token? <Navigate to="/profile" /> : <Auth />}
-        />
-        <Route 
-          path="/profile"
-          render={() => <Profile/>}
-        />
-        <Public 
-          path="/public"
-          render={() => <Public/> }
-        />
-      </Routes>
-    </div>
+      <div className="app">
+        <Navbar logout={logout}/>
+        <Routes>
+          <Route 
+            exact path="/"
+            render={() => token ? <Navigate to="/profile" /> : <Auth />}
+          />
+          <Route 
+            path="/profile"
+            render={() => <Profile/>}
+          />
+          <Public 
+            path="/public"
+            render={() => <Public/> }
+          />
+        </Routes>
+      </div>
   )
 }
-
-export default App;

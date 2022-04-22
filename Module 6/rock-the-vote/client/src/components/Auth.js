@@ -30,6 +30,7 @@ export default function Auth() {
     }
 
     <div className='auth-container'>
+        <h1>Rock The Vote</h1>
         { !toggle ?
             <>
             <AuthForm
@@ -47,7 +48,7 @@ export default function Auth() {
                 inputs={inputs}
                 btnText="Login"
             />
-            <p onClick={() => setToggle(prev => !prev)}>Not a member?</p>
+            <p onClick={() => setToggle(prev => !prev)}>Already a member?</p>
         </>
         }
 

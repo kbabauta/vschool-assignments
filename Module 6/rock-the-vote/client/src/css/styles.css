@@ -7,3 +7,15 @@
     outline: none;
     text-decoration: none;
 }
+
+.app {
+    background-color: #eee9;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 40px;
+    background-color: #3339;
+}

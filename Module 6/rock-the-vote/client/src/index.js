@@ -1,15 +1,18 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import App from './App'
-import UserProvider from './context/UserProvider'
+import App from './App.js'
+import UserProvider from './context/UserProvider.js'
 import './css/styles.css'
 
-ReactDOM.render(
+const container = document.getElementById('root')
+
+const root = ReactDOM.createRoot(container)
+
+root.render(
   <BrowserRouter>
     <UserProvider>
       <App/>
     </UserProvider>
-  </BrowserRouter>,
-  document.getElementById('root')
+  </BrowserRouter>
 )
