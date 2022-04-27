@@ -21,13 +21,12 @@ export default function IssueForm(props) {
         e.preventDefault()
         addIssue(inputs)
         setInputs(initInputs)
-        return inputs
     }
 
     const { title, description } = inputs
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form className='issue-form' onSubmit={handleSubmit}>
                 <input 
                     type="text"
                     placeholder='Title'

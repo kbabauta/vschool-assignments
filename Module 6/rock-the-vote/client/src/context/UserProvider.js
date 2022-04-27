@@ -16,7 +16,7 @@ export default function UserProvider(props){
     const initState = {
         user: JSON.parse(localStorage.getItem("user")) || {},
         token: localStorage.getItem("token") || "",
-        issues: []
+        issue: []
     }
 
     const [userState, setUserState] = useState(initState)
@@ -82,7 +82,7 @@ export default function UserProvider(props){
             .then(res => {
                 setUserState(prevState => ({
                     ...prevState,
-                    issues: [...prevState.issues, res.data]
+                    issues: [...prevState.issue, res.data]
                 }))
             })
             .catch(err => console.log(err.response.data.errMsg))
@@ -101,7 +101,7 @@ export default function UserProvider(props){
             .then(res => {
                 setUserState((prevUserState) => ({
                     ...prevUserState,
-                    issues: [prevUserState.issues.filter((issue) => issue._id !== id)]
+                    issues: [prevUserState.issue.filter((issue) => issue._id !== id)]
                 }))
             })
     }
@@ -115,10 +115,11 @@ export default function UserProvider(props){
                 logout,
                 addIssue,
                 addComment,
-                deleteIssue
+                deleteIssue,
+                getUserIssues
             }}
         >
-
+            {props.children}
         </UserContext.Provider>
     )
 }

@@ -29,28 +29,31 @@ export default function Auth() {
         console.log("logged in")
     }
 
-    <div className='auth-container'>
-        <h1>Rock The Vote</h1>
-        { !toggle ?
+    return(
+        <div className='auth-container'>
+            <h1>Rock The Vote</h1>
+            { !toggle ?
+                <>
+                <AuthForm
+                    handleChange={handleChange}
+                    handleSubmit={handleSignup}
+                    inputs={inputs}
+                    btnText="Sign Up"
+                />
+                <p onClick={() => setToggle(prev => !prev)}>Already a member?</p>
+                </>
+            :
             <>
-            <AuthForm
-                handleChange={handleChange}
-                handleSubmit={handleSignup}
-                inputs={inputs}
-                btnText="Sign Up"
-            />
+                <AuthForm 
+                    handleChange={handleChange}
+                    handleSubmit={handleLogin}
+                    inputs={inputs}
+                    btnText="Login"
+                />
+                <p onClick={() => setToggle(prev => !prev)}>Not a member?</p>
             </>
-        :
-        <>
-            <AuthForm 
-                handleChange={handleChange}
-                handleSubmit={handleLogin}
-                inputs={inputs}
-                btnText="Login"
-            />
-            <p onClick={() => setToggle(prev => !prev)}>Already a member?</p>
-        </>
-        }
+            }
 
-    </div>
+        </div>
+    )
 }

@@ -3,9 +3,10 @@ import Issue from '../components/Issue.js'
 
 export default function IssueList(props) {
     const {issues} = props
+
     return (
-        <div className='issue-list'>
-            {issues.map(issue => <Issue {...issue} key={issue._id} />)}
-        </div>
+            <div className='issue-list'>
+                { issues ? issues.map(issue => <Issue {...issue} key={issue._id} />) : "" }
+            </div>            
     )
 }

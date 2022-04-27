@@ -2,7 +2,6 @@ const express = require("express")
 const issueRouter = express.Router()
 const Issue = require("../models/Issue.js")
 
-
 // Get All Issues
 issueRouter.get("/", (req, res, next) => {
     Issue.find((err, issues) => {

@@ -12,20 +12,11 @@ export default function App() {
 
   return(
       <div className="app">
-        <Navbar logout={logout}/>
+        <Navbar logout = {logout}/>
         <Routes>
-          <Route 
-            exact path="/"
-            render={() => token ? <Navigate to="/profile" /> : <Auth />}
-          />
-          <Route 
-            path="/profile"
-            render={() => <Profile/>}
-          />
-          <Public 
-            path="/public"
-            render={() => <Public/> }
-          />
+          <Route exact path="/" element={token ? <Navigate to="/profile" /> : <Auth />} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/public" element={<Public/> } />
         </Routes>
       </div>
   )
