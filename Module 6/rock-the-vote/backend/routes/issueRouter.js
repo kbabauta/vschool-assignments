@@ -15,7 +15,7 @@ issueRouter.get("/", (req, res, next) => {
 
 // Get all issues by user
 issueRouter.get("/user", (req, res, next) => {
-    Issue.find({ user: req.user._id }, (err, issues) => {
+    Issue.find({ user: req.auth._id }, (err, issues) => {
             if(err){
                 res.status(500)
                 return next (err)
@@ -27,9 +27,12 @@ issueRouter.get("/user", (req, res, next) => {
 
 //Post Issue
 issueRouter.post("/", (req, res, next) => {
-    req.body.user = req.user._id
+    const userId = req.auth._id
+    req.body.user = userId
     const newIssue = new Issue(req.body)
     newIssue.save((err, savedIssue) => {
+        console.log(req.auth._id)
+
         if(err) {
             res.status(500)
             return next(err)
@@ -41,7 +44,7 @@ issueRouter.post("/", (req, res, next) => {
 // Delete Issue
 issueRouter.delete("/:issueId", (req, res, next) => {
     Issue.findOneAndDelete(
-        { _id: req.params.issueId, user: req.user._id },
+        { _id: req.params.issueId, auth: req.auth._id },
         (err, deletedIssue) => {
             if(err){
                 res.status(500)

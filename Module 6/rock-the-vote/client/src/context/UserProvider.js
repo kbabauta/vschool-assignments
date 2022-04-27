@@ -16,10 +16,12 @@ export default function UserProvider(props){
     const initState = {
         user: JSON.parse(localStorage.getItem("user")) || {},
         token: localStorage.getItem("token") || "",
-        issue: []
+        issues: []
     }
 
     const [userState, setUserState] = useState(initState)
+
+    // const [issueState, setIssueState] = useState([])
 
     // Signup
     function signup(credentials){
@@ -82,7 +84,7 @@ export default function UserProvider(props){
             .then(res => {
                 setUserState(prevState => ({
                     ...prevState,
-                    issues: [...prevState.issue, res.data]
+                    issues: [...prevState.issues, res.data]
                 }))
             })
             .catch(err => console.log(err.response.data.errMsg))
@@ -96,12 +98,12 @@ export default function UserProvider(props){
     }
 
     // Delete User Issue
-    function deleteIssue(id){
-        userAxios.delete(`/api/issues/${id}`)
+    function deleteIssue(issueId){
+        userAxios.delete(`/api/issues/${issueId}`)
             .then(res => {
                 setUserState((prevUserState) => ({
                     ...prevUserState,
-                    issues: [prevUserState.issue.filter((issue) => issue._id !== id)]
+                    issues: [prevUserState.issues.filter((issue) => issue._id !== issueId)]
                 }))
             })
     }
