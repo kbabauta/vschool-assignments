@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { UserContext } from '../context/UserProvider.js'
+// import { UserContext } from '../context/UserProvider.js'
 
 export default function Issue(props) {
     const { title, description, _id, user } = props
@@ -8,8 +8,8 @@ export default function Issue(props) {
 
     return(
         <div className='issue'>
-            <h2> {title} </h2>
-            <h3> {description} </h3>
+            <h1> {title} </h1>
+            <h4> {description} </h4>
             {/* <button onClick={() => deleteIssue(_id)}>x</button> */}
         </div>
     )

@@ -124,5 +124,9 @@ li:hover {
 
 
 .issue-list{
-    
+    margin: 16px 0 ;
+    border: 1px solid #3339;
+    background-color: #aaa9;
+    padding: 15px;
+    border-radius: 5px;
 }
