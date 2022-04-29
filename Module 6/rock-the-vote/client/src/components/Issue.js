@@ -8,8 +8,8 @@ export default function Issue(props) {
 
     return(
         <div className='issue'>
-            <h1> {title} </h1>
-            <h4> {description} </h4>
+            <h1> {title}  </h1>
+            <h4> {description}</h4>
             {/* <button onClick={() => deleteIssue(_id)}>x</button> */}
         </div>
     )

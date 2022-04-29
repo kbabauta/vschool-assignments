@@ -72,7 +72,7 @@ export default function UserProvider(props){
             .then(res => {
                 setUserState(prevState => ({
                     ...prevState,
-                    issues: [...prevState.issues, res.data]
+                    issues: res.data
                 }))
             })
             .catch(err => console.log(err.response.data.errMsg))
@@ -98,15 +98,15 @@ export default function UserProvider(props){
     }
 
     // Delete User Issue (not functional)
-    // function deleteIssue(issueId){
-    //     userAxios.delete(`/api/issues/${issueId}`)
-    //         .then(res => {
-    //             setUserState((prevUserState) => ({
-    //                 ...prevUserState,
-    //                 issues: [prevUserState.issues.filter((issue) => issue._id !== issueId)]
-    //             }))
-    //         })
-    // }
+    function deleteIssue(issueId){
+        userAxios.delete(`/api/issues/${issueId}`)
+            .then(res => {
+                setUserState((prevUserState) => ({
+                    ...prevUserState,
+                    issues: [prevUserState.issues.filter((issue) => issue._id !== issueId)]
+                }))
+            })
+    }
     
     return(
         <UserContext.Provider
@@ -117,8 +117,8 @@ export default function UserProvider(props){
                 logout,
                 addIssue,
                 addComment,
-                getUserIssues
-                // deleteIssue
+                getUserIssues,
+                deleteIssue
             }}
         >
             {props.children}
