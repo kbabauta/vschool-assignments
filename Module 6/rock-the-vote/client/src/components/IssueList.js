@@ -1,13 +1,16 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Issue from '../components/Issue.js'
+import { UserContext } from '../context/UserProvider.js'
 
 export default function IssueList(props) {
-
-    const {issues} = props
-    
     return (
-            <div className='issue-list'>
-                {issues.map(issue => <Issue {...issue} key={issue._id} />)}
-            </div>            
+        <div className='issue-list'>
+            {props.issues ? 
+                props.issues.map(issue => {
+                    return <Issue {...issue} key={issue._id} />
+                }
+            ) : "FINALLY"    
+        }
+        </div>
     )
 }

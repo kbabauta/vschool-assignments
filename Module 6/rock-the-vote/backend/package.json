@@ -4,6 +4,7 @@
   "description": "",
   "main": "db-atlas.js",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-jwt": "^7.4.2",

@@ -16,12 +16,13 @@ export default function UserProvider(props){
     const initState = {
         user: JSON.parse(localStorage.getItem("user")) || {},
         token: localStorage.getItem("token") || "",
-        issues: []
+        issues: [],
+        errMsg: ""
     }
 
     const [userState, setUserState] = useState(initState)
 
-    // const [issueState, setIssueState] = useState([])
+    const [issueListState, setIssueState] = useState([])
 
     // Signup
     function signup(credentials){
@@ -36,7 +37,7 @@ export default function UserProvider(props){
                     token
                 }))
             })
-            .catch(err => console.log(err.response.data.errMsg))
+            .catch(err => handleAuthError(err.response.data.errMsg))
     }
 
     // Login
@@ -53,7 +54,7 @@ export default function UserProvider(props){
                 token
             }))
         })
-        .catch(err => console.log(err.response.data.errMsg))
+        .catch(err => handleAuthError(err.response.data.errMsg))
     }
 
     // Logout
@@ -66,6 +67,17 @@ export default function UserProvider(props){
             issues: []
         })
     }
+
+    //Get all Issues
+    function getAllIssues(){
+        userAxios.get("/api/issues")
+        .then(res => {
+            setIssueState(res.data)
+            getUserIssues(userState.user._id)
+        })
+        .catch(err => console.log(err.response.data.errMsg))
+    }
+
     // Get User Issues
     function getUserIssues() {
         userAxios.get("/api/issues/user")
@@ -97,28 +109,54 @@ export default function UserProvider(props){
             .catch(err => console.log(err.response.data.errMsg))
     }
 
+
+    
     // Delete User Issue (not functional)
     function deleteIssue(issueId){
         userAxios.delete(`/api/issues/${issueId}`)
-            .then(res => {
-                setUserState((prevUserState) => ({
-                    ...prevUserState,
-                    issues: [prevUserState.issues.filter((issue) => issue._id !== issueId)]
-                }))
-            })
+        .then(res => {
+            setIssueState(prevState => prevState.filter(issue => issue._id !== issueId))
+        })
     }
     
+    // Edit Issue
+    function editIssue(updates, issueId){
+        userAxios.put(`/api/issues/${issueId}`, updates)
+            .then(res => {
+                setIssueState(prevList => prevList.map(issue => issue._id !== issueId ? issue : res.data))
+            })
+            .catch(err => console.log(err.response.data.errMsg))
+    }
+
+    function handleAuthError(errMsg){
+        setUserState(prevState => ({
+            ...prevState,
+            errMsg
+        }))
+    }
+
+    function resetAuthError(){
+        setUserState(prevState => ({
+            ...prevState,
+            errMsg:""
+        }))
+    }
+
     return(
         <UserContext.Provider
             value={{
                 ...userState,
+                issueListState,
                 signup,
                 login,
                 logout,
                 addIssue,
                 addComment,
+                getAllIssues,
                 getUserIssues,
-                deleteIssue
+                deleteIssue,
+                editIssue,
+                resetAuthError
             }}
         >
             {props.children}

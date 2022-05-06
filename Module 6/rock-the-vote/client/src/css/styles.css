@@ -130,3 +130,12 @@ li:hover {
     padding: 15px;
     border-radius: 5px;
 }
+
+.issue > h1 {
+    font-size: 36px;
+    margin: 10px 20px;
+}
+.issue > p {
+    font-size: 18px;
+    margin: 10px 0px;
+}
