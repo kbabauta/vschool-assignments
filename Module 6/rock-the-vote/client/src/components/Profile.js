@@ -11,7 +11,7 @@ export default function Profile() {
         issues,
         getUserIssues
     } = useContext(UserContext)
-    console.log(issues)
+    // console.log(issues)
     useEffect(() => {
         getUserIssues()
     }, [issues.length])

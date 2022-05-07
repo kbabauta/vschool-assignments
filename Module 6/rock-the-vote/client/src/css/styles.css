@@ -122,20 +122,53 @@ li:hover {
     border-radius: 5px;
 }
 
-
+/* User Issue Styles */
 .issue-list{
-    margin: 16px 0 ;
-    border: 1px solid #3339;
-    background-color: #aaa9;
+    margin: 2rem;
     padding: 15px;
     border-radius: 5px;
+    width: 90%;
 }
-
+.issue{
+    background-color: rgb(333, 222, 222);
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 1rem 0rem;
+    padding: 2rem;
+}
 .issue > h1 {
     font-size: 36px;
-    margin: 10px 20px;
 }
 .issue > p {
     font-size: 18px;
-    margin: 10px 0px;
+    margin: 1rem 0 ;
+}
+.issue > hr {
+    margin: 1rem 0rem;
+}
+.issue > sub {
+    font-size: 11px;
+    font-style: italic;
+}
+.issue > p:nth-of-type(2) {
+    font-size: 12px;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+
+/* Input Styles */
+.issue-form {
+    width: 1000px;
+    margin: 1rem 0rem;
+    display: flex;
+    border-radius: 10px;
+}
+.issue-form > button {
+    width: 100px;
+    float: right;
+}
+.desc-input {
+    height: 200px;
+    border-radius: 10px;
 }

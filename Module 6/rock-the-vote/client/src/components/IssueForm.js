@@ -34,7 +34,8 @@ export default function IssueForm(props) {
                     name="title"
                     onChange={handleChange}
                 />
-                <input 
+                <textarea
+                    className='desc-input' 
                     type="text"
                     placeholder="Description"
                     value={description}

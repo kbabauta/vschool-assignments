@@ -68,15 +68,17 @@ export default function UserProvider(props){
         })
     }
 
-    //Get all Issues
-    function getAllIssues(){
-        userAxios.get("/api/issues")
-        .then(res => {
-            setIssueState(res.data)
-            getUserIssues(userState.user._id)
-        })
-        .catch(err => console.log(err.response.data.errMsg))
-    }
+    // //Get all Issues
+    // function getAllIssues(){
+    //     userAxios.get("/api/issues")
+    //     .then(res => {
+    //         setIssueState(prevState => ({
+    //             ...prevState,
+    //             issues: res.data
+    //         }))
+    //     })
+    //     .catch(err => console.log(err.response.data.errMsg))
+    // }
 
     // Get User Issues
     function getUserIssues() {
@@ -152,7 +154,6 @@ export default function UserProvider(props){
                 logout,
                 addIssue,
                 addComment,
-                getAllIssues,
                 getUserIssues,
                 deleteIssue,
                 editIssue,
