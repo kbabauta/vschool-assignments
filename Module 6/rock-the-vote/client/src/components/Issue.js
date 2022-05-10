@@ -10,7 +10,6 @@ export default function Issue(props) {
             <p> {description}</p>
             <sub>Posted by {username} <br/></sub>
             <sub>Created {created} </sub>
-            <button onClick={() => deleteIssue(_id)}>x</button>
         </div>
     )
 }

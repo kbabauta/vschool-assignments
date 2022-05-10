@@ -1,9 +1,12 @@
 import React from 'react'
 
-export default function Comment() {
+export default function Comment(props) {
+    const {username, description} = props
+
     return(
         <div className='comment-container'>
-            <p> This is a comment </p>
+            <h3>Posted by {username}</h3>
+            <p>{description}</p>
         </div>
     )
 }

@@ -32,6 +32,7 @@ export default function IssueForm(props) {
                     placeholder='Title'
                     value={title}
                     name="title"
+                    id='title'
                     onChange={handleChange}
                 />
                 <textarea
@@ -40,6 +41,7 @@ export default function IssueForm(props) {
                     placeholder="Description"
                     value={description}
                     name="description"
+                    id='description'
                     onChange={handleChange}
                 />
                 <button type='submit'>Post</button>

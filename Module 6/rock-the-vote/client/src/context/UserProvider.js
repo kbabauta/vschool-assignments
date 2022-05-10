@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 export const UserContext = React.createContext()
@@ -17,10 +17,15 @@ export default function UserProvider(props){
         user: JSON.parse(localStorage.getItem("user")) || {},
         token: localStorage.getItem("token") || "",
         issues: [],
+        getAllIssues: [],
         errMsg: ""
     }
 
     const [userState, setUserState] = useState(initState)
+    useEffect(() => {
+        getUserIssues()
+        getAllIssues()
+    }, [])
 
     const [issueListState, setIssueState] = useState([])
 
@@ -68,17 +73,17 @@ export default function UserProvider(props){
         })
     }
 
-    // //Get all Issues
-    // function getAllIssues(){
-    //     userAxios.get("/api/issues")
-    //     .then(res => {
-    //         setIssueState(prevState => ({
-    //             ...prevState,
-    //             issues: res.data
-    //         }))
-    //     })
-    //     .catch(err => console.log(err.response.data.errMsg))
-    // }
+    //Get all Issues
+    function getAllIssues(){
+        userAxios.get("/api/issues")
+        .then(res => {
+            setIssueState(prevState => ({
+                ...prevState,
+                issues: res.data
+            }))
+        })
+        .catch(err => console.log(err.response.data.errMsg))
+    }   
 
     // Get User Issues
     function getUserIssues() {
@@ -104,9 +109,19 @@ export default function UserProvider(props){
             .catch(err => console.log(err.response.data.errMsg))
     }
 
+
+    // Add Vote
+    function vote (issueId, voteOutcome){
+        userAxios.post(`/api/issues/vote/${issueId}`, voteOutcome)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => console.log(err.response.data.errMsg))
+    }
+
     // Add comment
-    function addComment(newComment) {
-        userAxios.post("/api/issues/comments", newComment)
+    function addComment(issueId, content) {
+        userAxios.post(`/api/issues/comment/${issueId}`, content)
             .then(res => console.log(res))
             .catch(err => console.log(err.response.data.errMsg))
     }
@@ -154,9 +169,12 @@ export default function UserProvider(props){
                 logout,
                 addIssue,
                 addComment,
+                getAllIssues,
                 getUserIssues,
                 deleteIssue,
                 editIssue,
+                addComment,
+                vote,
                 resetAuthError
             }}
         >

@@ -9,6 +9,14 @@ export default function Auth() {
     const [toggle, setToggle] = useState(false)
 
     const { signup, login, errMsg, resetAuthError } = useContext(UserContext)
+
+    const handleGuestLogin = () => {
+        const guestLogin = {
+            username: "guest",
+            password: "password"
+        }
+        login(guestLogin)
+    }
     
     function handleChange(e) {
         const {name, value} = e.target
@@ -47,6 +55,8 @@ export default function Auth() {
                     errMsg={errMsg}
                 />
                 <p onClick={() => setToggle(prev => !prev)}>Already a member?</p>
+                {/* <p onClick={handleGuestLogin}>Continue as Guest</p> */}
+
                 </>
             :
             <>
@@ -58,7 +68,10 @@ export default function Auth() {
                     errMsg={errMsg}
                 />
                 <p onClick={() => setToggle(prev => !prev)}>Not a member?</p>
+                
             </>
+            
+            
             }
 
         </div>

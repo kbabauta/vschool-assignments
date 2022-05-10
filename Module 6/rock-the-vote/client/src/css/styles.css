@@ -168,7 +168,11 @@ li:hover {
     width: 100px;
     float: right;
 }
-.desc-input {
+#description {
+    margin-top: 1rem;
     height: 200px;
     border-radius: 10px;
+}
+#title {
+    height: 3.5rem;
 }
