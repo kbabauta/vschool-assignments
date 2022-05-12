@@ -1,8 +1,34 @@
+import React from 'react'
 
+export default function AuthForm(props){
+    const {
+        handleChange,
+        handleLogin,
+        btnText,
+        inputs: {
+            username,
+            password
+        }
+    } = props
 
-
-
-
-export default function AuthForm(){
-    
+    return (
+        <form className='auth-form' onSubmit={handleLogin}>
+            <input
+                type="text"
+                value={username}
+                name="username"
+                id="username"
+                onChange={handleChange}
+                placeholder="Username"
+            />
+            <input 
+                type="password"
+                value={password}
+                name="password"
+                onChange={handleChange}
+                placeholder="Password"
+            />
+            <input type="submit" value={btnText} />
+        </form>
+    )
 }
