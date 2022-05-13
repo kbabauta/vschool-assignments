@@ -40,7 +40,6 @@ export default function Auth(){
                             btnText="Sign Up"
                             errMsg={errMsg}
                         />
-                        <p style={{color: "red"}}>{ errMsg }</p>
                         <p onClick={() => setToggle(prev => !prev)}>Already a member?</p>
                     </>    
                 :
@@ -52,7 +51,6 @@ export default function Auth(){
                             btnText="Login"
                             errMsg={errMsg}
                         />
-                        <p style={{color: "red"}}>{ errMsg }</p>
                         <p onClick={() => setToggle(prev => !prev)}>Not a member?</p>
                     </>
             }

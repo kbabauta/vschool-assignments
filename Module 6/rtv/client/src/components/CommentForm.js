@@ -30,7 +30,7 @@ export default function CommentForm(props){
                 name="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Start typing new comment..."
+                placeholder="Say Something..."
             />
             <input type='submit' value='Add Comment' />
         </form>

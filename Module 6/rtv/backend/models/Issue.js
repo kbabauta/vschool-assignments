@@ -6,11 +6,26 @@ const issueSchema = new Schema ({
         type: String,
         required: true
     },
-
     description: {
         type: String,
         required: true
     },
+    
+    dateAdded: {
+        type: String,
+        required: true
+    },
+    votes: [{
+        userId: {
+            type: String,
+            required: true
+        },
+        voteType: {
+            type: Number,
+            default: 0,
+            required: true
+        }
+    }] | Number,
 
     user: {
         type: Schema.Types.ObjectId,
@@ -18,24 +33,10 @@ const issueSchema = new Schema ({
         required: true
     },
 
-    comment: {
-
-    },
-
-    likes: {
-        type: Number,
-        default: 0
-    },
-
-    dislikes: {
-        type: Number,
-        default: 0
-    },
-
-    created: {
-        type: Date,
-        default: Date.now
-    }
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: "Comment"
+    }]
 })
 
 module.exports = mongoose.model("Issue", issueSchema)

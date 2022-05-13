@@ -5,12 +5,7 @@ const commentSchema = new Schema ({
     comment: {
         type: String
     },
-
-    completed: {
-        type: Boolean,
-        default: false
-    },
-
+    
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",
@@ -20,6 +15,12 @@ const commentSchema = new Schema ({
     issue: {
         type: Schema.Types.ObjectId,
         ref: "Issue",
+        required: true
+    },
+
+    time: {
+        type: Date,
+        default: Date.now,
         required: true
     }
 })

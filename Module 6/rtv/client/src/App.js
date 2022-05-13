@@ -13,27 +13,15 @@ export default function App(){
 
     return (
         <div className="app">
-            <Navbar logout={logout}/>
+            {token && <Navbar logout={logout}/>}
             <Routes>
                 <Route 
-                    path="/"
-                    element={token ? <Navigate to="/issues"/> : <Auth login={login} signup={signup} />}
+                    path='/'
+                    render={() => token ? <Navigate to='/public' /> : <Auth/>}
                 />
                 <Route 
-                    path="/profile"
-                    element={<Profile username={user.username} />}
-                />
-                <Route 
-                    path="/issues"
-                    element={ <IssueList/> }
-                />
-                <Route 
-                    path="/newissue"
-                    element={ <IssueForm addIssue={addIssue} /> }
-                />
-                <Route 
-                    path="/issues/:issueId"
-                    element={ <Issue/> }
+                    path="/public"
+                    
                 />
 
             </Routes>
