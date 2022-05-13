@@ -3,17 +3,31 @@ const commentRouter = express.Router()
 const Comment = require('../models/Comment.js')
 
 //Get all by issue
-commentRouter.get("/:issueId", (req, res, next) => {
-        req.body.user = req.params._id
-        req.body.issueId = req.params.issueId
-        Comment.find((err, comments) => {
-            if(err){
+commentRouter.get("/issues/:issueId", (req, res, next) => {
+        Comment.find({ issue: req.params.issueId })
+            .populate("user")
+            .exec((err, comments) => {
+                if(err){
+                    res.status(500)
+                    return next(err)
+                }
+                return res.status(200).send(comments)
+            })
+})
+
+//Get all by user
+commentRouter.get("/user", (req, res, next) => {
+    Comment.find(
+        { user: req.user._id },
+        (err, comments) => {
+            if(err) {
                 res.status(500)
                 return next(err)
             }
             return res.status(200).send(comments)
-        })
-    })
+        }
+    )
+})
     
 
 // Post One Comment

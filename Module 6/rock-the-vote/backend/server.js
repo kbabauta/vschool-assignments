@@ -8,6 +8,7 @@ const connectDB = require('./db-atlas')
 const authRouter = require('../backend/routes/authRouter.js')
 const commentRouter = require('../backend/routes/commentRouter.js')
 const issueRouter = require('../backend/routes/issueRouter.js')
+const voteRouter = require('../backend/routes/voteRouter')
 
 
 app.use(express.json())
@@ -16,9 +17,10 @@ app.use(morgan('dev'))
 connectDB()
 
 app.use("/auth", authRouter)
-app.use('/api', jwt({ secret: process.env.SECRET, algorithms: ['HS256'] })) // req.user
+app.use('/api', jwt({ secret: process.env.SECRET, algorithms: ['HS256'] }))
 app.use("/api/issues", issueRouter)
-app.use("/api/issues/comments", commentRouter)
+app.use("/api/comments", commentRouter)
+app.use("/api/vote", voteRouter)
 
 
 

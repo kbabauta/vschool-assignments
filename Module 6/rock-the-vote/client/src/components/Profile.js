@@ -1,29 +1,27 @@
 import React, { useContext, useEffect } from "react";
-import IssueForm from "./IssueForm";
-import Issue from "./Issue";
-import IssueList from "./IssueList";
+import {Link} from 'react-router-dom'
 import { UserContext } from "../context/UserProvider";
 
-export default function Profile() {
-    const {
-        user: {username},
-        addIssue,
-        issues,
-        getUserIssues
-    } = useContext(UserContext)
-    // console.log(issues)
+import Issue from './Issue'
+
+export default function Profile(props) {
+    const { user: { username }, userIssues, getUserIssues } = useContext(UserContext)
+
     useEffect(() => {
         getUserIssues()
-    }, [issues.length])
-
-    return (
+        console.log("Use use effect, it's super effective")
+    }, [])
+    
+    return(
         <div className="profile">
-            <h1>Welcome {username}</h1>
-            <h3>Post an Issue</h3>
-            <IssueForm addIssue = {addIssue}/>
-            <h4>Your Issues</h4>
-            <IssueList issues={issues}/>
-            {/* {issues.map(issue => <Issue{...issue} key={issue._id} />)} */}
+            <h1>{username[0].toUpperCase() + username.substring(1)}'s Profile</h1>
+            <div className="issueList">
+                {[...userIssues].reverse().map(issue => (
+                    <Link to={`/${issue._id}`} key={issue._id} className='issue-link'>
+                        <Issue {...issue} />
+                    </Link>
+                ))}
+            </div>
         </div>
     )
 }

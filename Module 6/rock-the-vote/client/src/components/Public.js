@@ -2,18 +2,16 @@ import React, { useContext, useEffect } from "react";
 import { UserContext } from "../context/UserProvider";
 
 import IssueList from "./IssueList";
-import Issue from "./Issue";
-import PublicIssue from "./PublicIssue";
-import PublicList from "./PublicList";
 
 export default function Public() {
-    const { getAllIssues, issueListState:{issues}, username } = useContext(UserContext)
+    const { user, getAllIssues, issues } = useContext(UserContext)
 
-
-    return(
+    return (
         <div className="public">
-            <h1>Public Issues</h1>
-            <PublicList issues={issues} />
+            <h1>Welcome {user.username}</h1>
+            <div className="public-issue-list">
+                <IssueList issues={issues} getAllIssues={getAllIssues}/>
+            </div>
         </div>
     )
 }

@@ -4,13 +4,15 @@ const Issue = require("../models/Issue.js")
 
 // Get All Issues
 issueRouter.get("/", (req, res, next) => {
-    Issue.find((err, issues) => {
-        if(err) {
-            res.status(500)
-            return next (err)
-        }
-        return res.status(200).send(issues)
-    })
+    Issue.find()
+        .populate('user')
+        .exec((err, issues) => {
+            if(err) {
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(issues)
+        })
 })
 
 // Get all issues by user
@@ -71,37 +73,37 @@ issueRouter.put("/:issueId", (req, res, next) => {
     )
 })
 
-//Like Issue
-issueRouter.put("/:issueId/:like", (req, res, next) => {
-    Issue.findOneAndUpdate(
-        {_id: req.params.issueId, user: req.user._id},
-        {$inc: {likes: 1}},
-        {new: true},
-        (err, updatedIssue) => {
-            if(err){
-                res.status(500)
-                return next(err)
-            }
-            return res.status(201).send(updatedIssue)
-        }
-    )
-})
+// //Like Issue
+// issueRouter.put("/:issueId/:like", (req, res, next) => {
+//     Issue.findOneAndUpdate(
+//         {_id: req.params.issueId, user: req.user._id},
+//         {$inc: {likes: 1}},
+//         {new: true},
+//         (err, updatedIssue) => {
+//             if(err){
+//                 res.status(500)
+//                 return next(err)
+//             }
+//             return res.status(201).send(updatedIssue)
+//         }
+//     )
+// })
 
-// Dislike Issue
-issueRouter.put("/:issueId/:dislike", (req, res, next) => {
-    Issue.findOneAndUpdate(
-        {_id: req.params.issueId, user: req.user._id},
-        {$inc: {dislikes: 1}},
-        {new: true},
-        (err, updatedIssue) => {
-            if(err) {
-                res.status(500)
-                return next(err)
-            }
-            return res.status(201).send(updatedIssue)
-        }
-    )
-})
+// // Dislike Issue
+// issueRouter.put("/:issueId/:dislike", (req, res, next) => {
+//     Issue.findOneAndUpdate(
+//         {_id: req.params.issueId, user: req.user._id},
+//         {$inc: {dislikes: 1}},
+//         {new: true},
+//         (err, updatedIssue) => {
+//             if(err) {
+//                 res.status(500)
+//                 return next(err)
+//             }
+//             return res.status(201).send(updatedIssue)
+//         }
+//     )
+// })
 
 
 module.exports = issueRouter
