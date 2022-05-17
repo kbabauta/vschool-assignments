@@ -1,36 +1,25 @@
-import React, { useContext } from "react"
-import { Routes, Route, Navigate } from "react-router-dom"
-import Navbar from "./components/Navbar"
-import Auth from "./components/Auth"
-import Profile from "./components/Profile"
-import IssueList from "./components/IssueList"
-import IssueForm from "./components/IssueForm"
-import Issue from "./components/Issue"
-import { UserContext } from "./context/UserProvider"
+import logo from './logo.svg';
+import './App.css';
 
-export default function App(){
-    const { user, token, logout, login, signup, addIssue } = useContext(UserContext)
-
-    return (
-        <div className="app">
-            {token && <Navbar logout={logout}/>}
-            <Routes>
-                <Route 
-                    path='/'
-                    render={() => token ? <Navigate to='/public' /> : <Auth/>}
-                />
-                <Route 
-                    path="/public"
-                    
-                />
-
-            </Routes>
-
-
-
-        </div>
-    )
-
-
-
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
 }
+
+export default App;
