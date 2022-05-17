@@ -17,14 +17,16 @@ issueRouter.get("/", (req, res, next) => {
 
 // Get all issues by user
 issueRouter.get("/user", (req, res, next) => {
-    Issue.find({ user: req.auth._id }, (err, issues) => {
-            if(err){
-                res.status(500)
-                return next (err)
-            }
-            return res.status(200).send(issues)
+    Issue.find({ user: req.auth._id })
+    .populate('comments')
+    .exec(function (err, issues) {
+        if(err) {
+            res.status(500)
+            return next(err)
         }
-    )
+        return res.status(200).send(issues.map(transformVotes))
+    })
+        
 })
 
 //Post Issue
