@@ -1,27 +1,42 @@
-import React, { useContext, useEffect } from "react";
-import {Link} from 'react-router-dom'
+import React, { useContext } from "react";
 import { UserContext } from "../context/UserProvider";
-
-import Issue from './Issue'
+import IssueForm from "./IssueForm";
+import IssueList from "./IssueList";
 
 export default function Profile(props) {
-    const { user: { username }, userIssues, getUserIssues } = useContext(UserContext)
+    const {
+        user: {
+            username
+        },
+        getUserIssues,
+        addIssue,
+        editIssue,
+        deleteIssue,
+        issues,
+        addVote,
+        removeVote,
+        addComment
+    } = useContext(UserContext)
+    console.log(issues)
 
-    useEffect(() => {
-        getUserIssues()
-        console.log("Use use effect, it's super effective")
-    }, [])
-    
-    return(
+    const { location } = props
+
+    return (
         <div className="profile">
-            <h1>{username[0].toUpperCase() + username.substring(1)}'s Profile</h1>
-            <div className="issueList">
-                {[...userIssues].reverse().map(issue => (
-                    <Link to={`/${issue._id}`} key={issue._id} className='issue-link'>
-                        <Issue {...issue} />
-                    </Link>
-                ))}
-            </div>
+            <h1>Hello {username[0].toUpperCase() + username.substring(1)}!</h1>
+            <h3>Add an Issue</h3> 
+            <IssueForm submit={addIssue} btnText ="Add Issue"/>
+            <h3>Your Issues</h3>
+            <IssueList 
+                issues={issues} 
+                editIssue={editIssue} 
+                deleteIssue={deleteIssue}
+                addVote={addVote}
+                removeVote={removeVote}
+                addComment={addComment}
+                getUserIssues={getUserIssues}
+                location={location}
+            />
         </div>
     )
 }

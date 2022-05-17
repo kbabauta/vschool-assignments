@@ -33,8 +33,6 @@ issueRouter.post("/", (req, res, next) => {
     req.body.user = userId
     const newIssue = new Issue(req.body)
     newIssue.save((err, savedIssue) => {
-        console.log(req.auth._id)
-
         if(err) {
             res.status(500)
             return next(err)
@@ -60,7 +58,7 @@ issueRouter.delete("/:issueId", (req, res, next) => {
 // Updated Issue
 issueRouter.put("/:issueId", (req, res, next) => {
     Issue.findOneAndUpdate(
-        {_id: req.params.issueId, user: req.user._id},
+        {_id: req.params.issueId, user: req.auth._id},
         req.body,
         {new: true},
         (err, updatedIssue) => {
@@ -72,6 +70,33 @@ issueRouter.put("/:issueId", (req, res, next) => {
         }
     )
 })
+
+issueRouter.put("/vote/:issueId/:type", (req, res, next) => {
+    Issue.findOneAndUpdate(
+        { _id: req.params.issueId, 'votes.userId' : { $ne: req.auth._id } },
+        { $push: { votes: { userId: req.auth._id, voteType: req.params.type === 'increment' ? 1 : -1 } } },
+        { new: true },
+        (err, updatedIssue) => {
+            if(err) {
+                res.status(500)
+                return next(err)
+            }
+            console.log(updatedIssue)
+            return res.status(201).send(updatedIssue ? transformVotes(updatedIssue) : null)
+        }
+    )
+})
+
+function transformVotes(issue){
+    if (!issue.votes) {
+        issue.votes = []
+    }
+    const test = issue.votes.reduce((total, vote) => {
+        return total += vote.voteType
+    }, 0)
+    issue.votes = test
+    return issue
+}
 
 // //Like Issue
 // issueRouter.put("/:issueId/:like", (req, res, next) => {

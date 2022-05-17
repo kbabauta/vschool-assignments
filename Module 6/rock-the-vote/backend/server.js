@@ -6,9 +6,7 @@ const { expressjwt: jwt } = require("express-jwt")
 const connectDB = require('./db-atlas')
 
 const authRouter = require('../backend/routes/authRouter.js')
-const commentRouter = require('../backend/routes/commentRouter.js')
 const issueRouter = require('../backend/routes/issueRouter.js')
-const voteRouter = require('../backend/routes/voteRouter')
 
 
 app.use(express.json())
@@ -18,9 +16,7 @@ connectDB()
 
 app.use("/auth", authRouter)
 app.use('/api', jwt({ secret: process.env.SECRET, algorithms: ['HS256'] }))
-app.use("/api/issues", issueRouter)
-app.use("/api/comments", commentRouter)
-app.use("/api/vote", voteRouter)
+app.use("/api/issue", issueRouter)
 
 
 

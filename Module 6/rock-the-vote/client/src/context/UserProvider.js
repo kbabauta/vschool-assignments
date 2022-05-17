@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 
 export const UserContext = React.createContext()
@@ -16,15 +16,14 @@ export default function UserProvider(props){
     const initState = {
         user: JSON.parse(localStorage.getItem("user")) || {},
         token: localStorage.getItem("token") || "",
-        userIssues: [],
+        issues: [],
         errMsg: ""
     }
 
     const [userState, setUserState] = useState(initState)
-    const [allIssues, setAllIssues] = useState([])
     const [issueComments, setIssueComments] = useState([])
 
-    const [issueListState, setIssueState] = useState([])
+    // const [issueListState, setIssueState] = useState([])
 
     // Signup
     function signup(credentials){
@@ -57,6 +56,7 @@ export default function UserProvider(props){
                 token
             }))
         })
+        .then(() => getUserIssues())
         .catch(err => handleAuthError(err.response.data.errMsg))
     }
 
@@ -81,18 +81,28 @@ export default function UserProvider(props){
 
     //Get all Issues
     function getAllIssues(){
-        userAxios.get("/api/issues")
-        .then(res => setAllIssues(res.data))
-        .catch(err => console.log(err.response.data.errMsg))
+        userAxios.get("/api/issue")
+        .then( res => {
+            setUserState(prevState => {
+                return {
+                    ...prevState,
+                    issues: res.data,
+                    comments: res.data
+                }
+            })
+        })
+
+        .catch (err => console.log(err.response.data.errMsg))
     }   
 
     // Get User Issues
     function getUserIssues() {
-        userAxios.get(`/api/issues/user/${userState.user._id}`)
+        userAxios.get(`/api/issue/user`)
             .then(res => {
                 setUserState(prevState => ({
                     ...prevState,
-                    userIssues: res.data
+                    issues: res.data,
+                    comments: res.data
                 }))
             })
             .catch(err => console.log(err.response.data.errMsg))
@@ -100,7 +110,7 @@ export default function UserProvider(props){
 
     //Add Issue
     function addIssue(newIssue){
-        userAxios.post("/api/issues", newIssue)
+        userAxios.post("/api/issue", newIssue)
             .then(res => {
                 setUserState(prevState => ({
                     ...prevState,
@@ -110,6 +120,30 @@ export default function UserProvider(props){
             .catch(err => console.log(err.response.data.errMsg))
     }
 
+    // Edit issue
+    function editIssue(updates, issueId) {
+        userAxios.put(`/api/issue/${issueId}`, updates)
+            .then(res => {
+                setUserState(prevState => ({
+                    ...prevState,
+                    issues: prevState.issues.map(issue => issue._id !== issueId ? issue : res.data)
+                }))
+            })
+            .catch (err => console.log(err.response.data.errMsg))
+    }
+
+    // // Delete User Issue (not functional)
+    function deleteIssue(issueId){
+        userAxios.delete(`/api/issue/${issueId}`)
+        .then(res => {
+            setUserState(prevState => ({
+                ...prevState,
+                issues: prevState.issues.filter(issue => issue._id !== issueId),
+            }))
+        })
+        .catch(err => console.log(err.response.data.errMsg))
+    }
+
     // Add comment
     function addComment(newComment, issueId) {
         userAxios.post(`/api/comment/${issueId}`, newComment)
@@ -117,28 +151,44 @@ export default function UserProvider(props){
         .catch(err => console.log(err.response.data.errMsg))
     }
 
-    // Get issue comments
-    function getIssueComments(issueId) {
-        userAxios.get(`/api/comment/issue/`)
+    function updateVoteCount(updatedIssue) {
+        if (!updatedIssue) return
+        const index = userState.issues.findIndex(issue => issue._id === updatedIssue._id)
+        if (index === -1) {
+            console.log("Issue not found")
+        } else {
+            setUserState(prevState => ({
+                ...prevState,
+                issues: [
+                    ...prevState.issues.slice(0, index),
+                    Object.assign({}, prevState.issues[index], { votes: updatedIssue.votes }), ...prevState.issues.slice(index + 1)
+                ]
+            }))
+        }
     }
-
-
     
-    // Delete User Issue (not functional)
-    function deleteIssue(id){
-        userAxios.delete(`/api/issues/${id}`)
-        .then(res => {
-            getUserIssues()
-        })
-        .catch(err => console.log(err.response.data.errMsg))
+
+    // Add vote
+    function addVote(issueId) {
+        userAxios.put(`/api/issue/vote/${issueId}/increment`)
+            .then(res => updateVoteCount(res.data))
+            .catch(err => console.log(err.response.data.errMsg))
     }
+
+    // Delete Vote
+    function removeVote(issueId){
+        userAxios.put(`/api/issue/vote/${issueId}/decrement`)
+            .then( res => updateVoteCount(res.data))
+            .catch(err => console.log(err.response.data.errMsg))
+    }
+
     
 
     return(
         <UserContext.Provider
             value={{
                 ...userState,
-                issueListState,
+                issueComments,
                 signup,
                 login,
                 logout,
@@ -146,9 +196,11 @@ export default function UserProvider(props){
                 addComment,
                 getAllIssues,
                 getUserIssues,
+                editIssue,
                 deleteIssue,
-                addComment,
                 resetAuthError,
+                addVote,
+                removeVote,
             }}
         >
             {props.children}

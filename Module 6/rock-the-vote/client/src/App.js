@@ -7,11 +7,11 @@ import Public from "./components/Public";
 import { UserContext } from "./context/UserProvider"
 
 export default function App() {
-  const { token, logout } = useContext(UserContext)
+  const { token, logout, getAllIssues } = useContext(UserContext)
 
   return(
       <div className="app">
-        {token && <Navbar logout = {logout}/>}
+        {token && <Navbar getAllIssues={getAllIssues} logout = {logout}/>}
         <Routes>
           <Route 
           path="/" 
@@ -19,9 +19,12 @@ export default function App() {
           />
           <Route 
             path="/profile" 
-            element={!token ? <Navigate to="/" /> : <Profile />}
+            element={token ? <Profile /> : <Auth />}
           />
-          <Route path="/public" element={<Public/> } />
+          <Route 
+            path="/public" 
+            element = {<Public/>}
+          />
         </Routes>
       </div>
   )

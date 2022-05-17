@@ -1,17 +1,28 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../context/UserProvider";
 
 import IssueList from "./IssueList";
 
-export default function Public() {
-    const { user, getAllIssues, issues } = useContext(UserContext)
+export default function Public(props) {
+    const { 
+        issues,
+        addVote,
+        removeVote,
+        addComment
+     } = useContext(UserContext)
+     console.log(issues)
 
-    return (
-        <div className="public">
-            <h1>Welcome {user.username}</h1>
-            <div className="public-issue-list">
-                <IssueList issues={issues} getAllIssues={getAllIssues}/>
-            </div>
-        </div>
-    )
+     const { location } = props
+
+     return (
+         <div className="public">
+             <IssueList 
+                issues={issues}
+                addVote={addVote}
+                removeVote={removeVote}
+                addComment={addComment}
+                location={location}
+             />
+         </div>
+     )
 }

@@ -9,27 +9,27 @@ const issueSchema = new Schema ({
 
     description: {
         type: String,
-        required: true
     },
-
+    
+    votes: [{
+        userId: {
+            type: String,
+            required: true
+        },
+        voteType: {
+            type: Number,
+            default: 0,
+            required: true
+        }
+    }] | Number,
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true
     },
-
-    comment: {
-
-    },
-
-    likes: [{
+    comments: [{
         type: Schema.Types.ObjectId,
-        ref: "User"
-    }],
-
-    dislikes: [{
-        type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: "Comment"
     }],
 
     created: {
