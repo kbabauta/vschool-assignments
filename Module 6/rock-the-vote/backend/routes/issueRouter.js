@@ -1,6 +1,7 @@
 const express = require("express")
 const issueRouter = express.Router()
 const Issue = require("../models/Issue.js")
+const Comment = require("../models/Comment")
 
 // Get All Issues
 issueRouter.get("/", (req, res, next) => {
@@ -40,6 +41,28 @@ issueRouter.post("/", (req, res, next) => {
             return next(err)
         }
         return res.status(201).send(savedIssue)
+    })
+})
+
+// Add comment to issue
+issueRouter.post("/comments/:issueId", (req, res, next) => {
+    const userId = req.auth._id
+    req.body.user = userId
+    req.body.issue = req.params.issueId
+    const newComment = new Comment(req.body)
+    newComment.save((err, savedComment) => {
+        if(err) {
+            res.status(500)
+            return next(err)
+        }
+        Issue.updateOne({ _id: req.params.issueId },
+            { $push: { comments: savedComment._id } }, (err, issue) => {
+                if(err) {
+                    res.status(500)
+                    return next(err)
+                }
+                return res.status(201).send(savedComment)
+            })
     })
 })
 

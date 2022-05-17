@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContext } from "../context/UserProvider";
 import IssueForm from "./IssueForm";
 import IssueList from "./IssueList";
@@ -20,6 +20,10 @@ export default function Profile(props) {
     console.log(issues)
 
     const { location } = props
+
+    useEffect(() => {
+        getUserIssues()
+    },[])
 
     return (
         <div className="profile">

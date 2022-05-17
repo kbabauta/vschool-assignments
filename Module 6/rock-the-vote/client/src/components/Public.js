@@ -8,7 +8,7 @@ export default function Public(props) {
         issues,
         addVote,
         removeVote,
-        addComment
+        addComment,
      } = useContext(UserContext)
      console.log(issues)
 
