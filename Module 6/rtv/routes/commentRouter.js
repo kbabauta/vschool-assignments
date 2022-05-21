@@ -44,3 +44,5 @@ commentRouter.delete("/:commentId", (req, res, next) => {
         }
     )
 })
+
+module.exports = commentRouter
