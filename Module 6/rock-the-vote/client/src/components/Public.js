@@ -1,28 +1,29 @@
-import React, { useContext } from "react";
-import { UserContext } from "../context/UserProvider";
+import React, { useEffect, useState } from "react";
+import User from "./User";
+import axios from "axios";
 
-import IssueList from "./IssueList";
+export default function Public() {
 
-export default function Public(props) {
-    const { 
-        issues,
-        addVote,
-        removeVote,
-        addComment,
-     } = useContext(UserContext)
-     console.log(issues)
+    const userAxios = axios.create()
 
-     const { location } = props
+    userAxios.interceptors.request.use(config => {
+        const token = localStorage.getItem("token")
+        config.headers.Authorization = `Bearer ${token}`
+        return config
+    })
 
-     return (
-         <div className="public">
-             <IssueList 
-                issues={issues}
-                addVote={addVote}
-                removeVote={removeVote}
-                addComment={addComment}
-                location={location}
-             />
-         </div>
-     )
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {userAxios.get("/api/users")
+        .then(res => setUsers(res.data))
+        .catch(err => console.log(err.response.data.errMsg))
+    }, [])
+    
+    console.log(users)
+
+    return (
+        <div className="public-issue-holder">
+            {users.map(user => <User {...user} key={user._id} />)}
+        </div>
+    )
 }
