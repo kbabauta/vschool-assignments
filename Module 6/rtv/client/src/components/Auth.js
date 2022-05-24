@@ -30,8 +30,8 @@ export default function Auth() {
     }
 
     return (
-        <>
-            <h1 className='title'>Welcome to Rock The Vote</h1>
+        <div className='auth-container'>
+            <h1>Welcome to Rock The Vote</h1>
 
             {!toggle ?
             <>
@@ -59,6 +59,6 @@ export default function Auth() {
         
             }
         
-        </>
+        </div>
     )
 }

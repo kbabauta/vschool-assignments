@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { format } = require('morgan')
 const Schema = mongoose.Schema
 
 const issueSchema = new Schema({
@@ -18,6 +19,11 @@ const issueSchema = new Schema({
 
     downVotes: {
         type: Number
+    },
+
+    createdAt: {
+        type: Date,
+        default: Date.now
     },
 
     user: {

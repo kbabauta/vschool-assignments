@@ -10,7 +10,7 @@ commentRouter.get("/:issueId", (req, res, next) => {
                 res.status(500)
                 return next(err)
             }
-            res.send(200).send(comments)
+            res.status(200).send(comments)
         }
     )
 })
