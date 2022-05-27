@@ -163,7 +163,7 @@ postRouter.delete("/:postId", (req, res, next) => {
 })
 
 // Update Post
-issueRouter.put("/:postId", (req, res, next) => {
+postRouter.put("/:postId", (req, res, next) => {
     Post.findOneAndUpdate (
         {_id: req.params.postId, auth: req.auth._id},
         req.body,

@@ -12,6 +12,11 @@
 
 :root {
     --color-bg: #EAE7DC;
+    --color-bg-variant: #D8C3A5;
+    --color-primary: #8E8D8A;
+    --color-primary-variant: #E98074;
+    --color-secondary: #E85A4F;
+    --color-white: white;
 }
 
 body {
