@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../context/UserContext'
+import '../css/post.css'
+
 
 export default function PostEdit(props) {
 
@@ -29,7 +31,7 @@ export default function PostEdit(props) {
     const { title, description, imgUrl } = inputs
     
     return (
-        <div className='post-edit' onSubmit={handleSubmit}>
+        <form className='post-edit' onSubmit={handleSubmit}>
             <input 
                 type="text"
                 name="title"
@@ -39,6 +41,8 @@ export default function PostEdit(props) {
             />
             <textarea 
                 type="textarea"
+                cols="20"
+                rows="5"
                 name='description'
                 value={description}
                 onChange={handleChange}
@@ -52,6 +56,6 @@ export default function PostEdit(props) {
                 placeholder="Image URL"
             />
             <button>Save Changes</button>
-        </div>
+        </form>
     )
 }

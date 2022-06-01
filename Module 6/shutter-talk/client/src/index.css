@@ -23,3 +23,7 @@ body {
     font-family: 'Raleway', sans-serif;
     background: var(--color-bg);
 }
+
+button:hover {
+    cursor: pointer;
+}

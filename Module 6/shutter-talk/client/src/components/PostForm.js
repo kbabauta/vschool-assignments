@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../css/post.css'
 
 export default function PostForm(props) {
     
@@ -14,7 +15,7 @@ export default function PostForm(props) {
         const { name, value } = e.target
         setInputs(prevInputs => ({
             ...prevInputs,
-            [ name ]: value
+            [name]: value
         }))
     }
 
@@ -27,7 +28,7 @@ export default function PostForm(props) {
     const { title, description, imgUrl } = inputs
 
     return (
-        <div className='post-form' onSubmit={handleSubmit}>
+        <form className='post-form' onSubmit={handleSubmit}>
             <input 
                 type="text"
                 name="title"
@@ -37,19 +38,21 @@ export default function PostForm(props) {
             />
             <textarea 
                 type="textarea"
-                name='description'
+                name="description"
+                cols="20"
+                rows="5"
                 value={description}
                 onChange={handleChange}
                 placeholder="Description"
             />
             <input 
                 type="text"
-                name='imgUrl'
+                name="imgUrl"
                 value={imgUrl}
                 onChange={handleChange}
                 placeholder="Image URL"
             />
-            <button>Post</button>
-        </div>
+            <button>Add Post</button>
+        </form>
     )
 }

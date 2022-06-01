@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import AuthForm from '../components/AuthForm'
 import { UserContext } from '../context/UserContext'
 import '../css/auth.css'
+import background from '../assets/background-1.jpg'
 
 export default function Auth() {
     const initInputs = {username: "", password:""}
@@ -32,7 +33,7 @@ export default function Auth() {
     
 
     return (
-        <div>
+        <div className='auth-page'>
             <div className='auth-image'></div>
                 <div className='auth-container'>
                     <h1>Shutter Talk</h1>
