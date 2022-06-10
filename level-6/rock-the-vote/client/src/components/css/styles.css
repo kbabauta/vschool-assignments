@@ -1,0 +1,262 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: sans-serif;
+    outline: none;
+    text-decoration: none;
+}
+
+.app {
+    background-color: #FFAD6E;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 90px;
+    height: 40px;
+    background-color: #D98564;
+    color: antiquewhite;
+    border: none;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+}
+
+a {
+    color: black;
+}
+
+li {
+    margin: 12px 100px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 2px 2px #A6500E;
+    background-color: #FFAF8F;
+}
+
+li:hover {
+    opacity: 50%;
+}
+
+/* Auth Container */
+.auth-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.auth-container > h1 {
+    font-size: 2em;
+    margin: 24px;
+}
+
+.auth-container > p { 
+    margin: 16px;
+    text-decoration: underline;
+    opacity: 50%;
+}
+
+.auth-container > p:hover {
+    cursor: pointer;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.auth-container > form {
+    border: 1px solid #3330;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: rgba(255, 172, 78, 0.226);
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-container > form > input {
+    margin: 16px 8px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.auth-container > form > button {
+    margin: 16px 8px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+/* Issue List */
+.issue-list {
+    margin: 2rem;
+    padding: 30px;
+    border-radius: 5px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.issue {
+    border: 2px solid;
+    background-color: #48C8D9;
+    color: #1B365C;
+    border-radius: 25px;
+    padding: 40px;
+    margin: 50px auto 50px auto;
+    width: 100%;
+
+}
+
+.issue > button {
+    border-radius: 25px;
+    margin: 10px 10px ;
+    text-decoration: none;
+    padding: 5px;
+    box-shadow: 2px 2px #888888 ;
+}
+
+.issue-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.issue-edit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.issue-edit > input,
+.issue-edit > textarea {
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.issue-edit > button {
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 50px;
+}
+
+.issue-form > input,
+.issue-form > textarea {
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.issue-form > button {
+    margin: 8px 0px;
+    padding: 8px;
+    border-radius: 50px;
+}
+
+.issue > h1 {
+    font-size: 48px;
+    margin: 10px;
+}
+
+.issue > h3 {
+    font-size: 18px;
+    font-weight: normal;
+    margin: 10px;
+    padding: 20px 0 20px;
+}
+
+
+
+/* User Cards */
+.user-card {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+}
+
+.user-card > h1 {
+    font-size: 28px;
+    border: 2px dotted black;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* Comments */
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+}
+
+.comment-form > textarea {
+    width: 100%;
+    height: 8rem;
+}
+
+.comment-form > button {
+    margin: 10px 10px;
+    padding: 5px;
+    width: fit-content;
+    
+}
+
+.comment {
+    background-color: #0093A6;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.comment > h4 {
+    margin: 10px auto;
+    padding: 10px;
+}
+
+.comment > button {
+    padding: 5px;    
+}
+
+
+
+
+/* Profile */
+.profile > h1 {
+    font-size: 48px;
+    font-weight: normal;
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+}
+
+.profile > h3 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: normal;
+    margin: 10px;
+}

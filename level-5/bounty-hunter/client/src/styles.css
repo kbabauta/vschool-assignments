@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #0d0d0d;
+<<<<<<< HEAD
+  background-color: whitesmoke;
+=======
+  background-color: #8c8c8c;
+>>>>>>> b172dd4d4e971d876b3f11415f6494ed4140e7fc
+}
+
+h1 {
+  margin: 5px;
+}
+
+h3 {
+  margin: 5px;
+}
+
+p {
+  margin: 5px;
+}
+
+.bounty-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 32px;
+}
+
+.bounty {
+  border: 3px solid #333;
+  padding: 10px;
+  margin: 5px;
+}
+
+form {
+  border: 1px solid #333;
+  padding: 10px;
+  margin: 5px;
+}
+
+input {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  font-size: 16px;
+  border: 1px solid black;
+  text-align: center;
+  font-weight: bold;
+}
+
+input:focus {
+  outline: black;
+  background-color: whitesmoke;
+}
+
+select {
+  padding: 5px;
+  margin: 6px;
+  font-size: 14px;
+  border: 2px solid black;
+}
+
+button {
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.delete-btn {
+  background-color: firebrick;
+  color: black;
+}
+.delete-btn:hover {
+  font-style: italic;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.edit-btn {
+  background-color: cadetblue;
+  color: black;
+}
+.edit-btn:hover {
+  font-style: italic;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+::placeholder {
+  font-weight: bold;
+  opacity: 1;
+}
