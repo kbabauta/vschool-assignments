@@ -1,3 +1,5 @@
+###How to play###
+
 1. Open terminal
 
 2. node script.js
